@@ -5,6 +5,13 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property-read string $id
+ * @property-read string $apelido
+ * @property-read string $nome
+ * @property-read string $nascimento
+ * @property-read array $stack
+ */
 class PessoaResource extends JsonResource
 {
     /**

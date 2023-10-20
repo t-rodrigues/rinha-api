@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pessoa>
@@ -19,7 +20,7 @@ class PessoaFactory extends Factory
         $nome = fake()->firstName();
 
         return [
-            'apelido'    => strtolower($nome),
+            'apelido'    => Str::slug($nome),
             'nome'       => $nome,
             'nascimento' => fake()->date(),
             'stack'      => $this->gerarStack(),
@@ -29,7 +30,7 @@ class PessoaFactory extends Factory
     private function gerarStack(): array
     {
         $quantidade = fake()->numberBetween(0, 5);
-        $stack = [];
+        $stack      = [];
 
         for ($i = 0; $i < $quantidade; $i++) {
             $stack[] = fake()->word();

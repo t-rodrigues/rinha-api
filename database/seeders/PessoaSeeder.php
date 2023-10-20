@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Pessoa;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PessoaSeeder extends Seeder
 {
@@ -15,14 +15,14 @@ class PessoaSeeder extends Seeder
     {
         Pessoa::truncate();
 
-        for ($i=0; $i < 20; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $randomNome = fake()->firstName();
             Pessoa::created([
-                'apelido' => Str::slug($randomNome),
-                'nome' => $randomNome,
+                'apelido'    => Str::slug($randomNome),
+                'nome'       => $randomNome,
                 'nascimento' => fake()->date(),
                 // 'stack' => fake()
-            ])
+            ]);
         }
     }
 }

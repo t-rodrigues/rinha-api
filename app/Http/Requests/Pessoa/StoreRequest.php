@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Pessoa;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\ValidationException;
 
 /**
  * @property-read string $apelido
@@ -37,11 +35,4 @@ class StoreRequest extends FormRequest
             'stack.*'    => 'string|max:32',
         ];
     }
-
-    // protected function failedValidation(Validator $validator)
-    // {
-    //     throw (new ValidationException($validator))
-    //         ->errorBag($this->errorBag)
-    //         ->redirectTo($this->getRedirectUrl());
-    // }
 }
