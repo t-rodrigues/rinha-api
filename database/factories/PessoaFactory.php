@@ -17,7 +17,7 @@ class PessoaFactory extends Factory
      */
     public function definition(): array
     {
-        $nome = fake()->firstName();
+        $nome = fake()->name();
 
         return [
             'apelido'    => Str::slug($nome),

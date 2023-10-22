@@ -12,8 +12,8 @@ it('should return 400 when query param is not provided', function () {
 
 it('should return an empty array when term is not found', function () {
     get(route('pessoas.search', ['t' => 'Java']))
-        ->assertJsonIsArray()
-        ->assertJsonCount(0)
+        ->assertJsonIsArray('data')
+        ->assertJsonCount(0, 'data')
         ->assertOk();
 });
 
@@ -22,8 +22,8 @@ it('should return an array with one result when apelido matches', function () {
     $pessoa = Pessoa::all()->random();
 
     get(route('pessoas.search', ['t' => $pessoa->apelido]))
-        ->assertJsonIsArray()
-        ->assertJsonCount(1)
+        ->assertJsonIsArray('data')
+        ->assertJsonCount(1, 'data')
         ->assertOk();
 });
 
@@ -33,8 +33,8 @@ it('should return an array with more than 1 when nomes matches', function () {
     Pessoa::factory(5)->create();
 
     get(route('pessoas.search', ['t' => $searchTerm]))
-        ->assertJsonIsArray()
-        ->assertJsonCount(2)
+        ->assertJsonIsArray('data')
+        ->assertJsonCount(2, 'data')
         ->assertOk();
 });
 
@@ -44,18 +44,18 @@ it('should return an array when stack contains the search term', function () {
     Pessoa::factory(5)->create();
 
     get(route('pessoas.search', ['t' => $searchTerm]))
-        ->assertJsonIsArray()
-        ->assertJsonCount(5)
+        ->assertJsonIsArray('data')
+        ->assertJsonCount(5, 'data')
         ->assertJsonFragment(['stack' => [$searchTerm]])
         ->assertOk();
 });
 
 it('should return an array when term is found in multiple fields', function () {
-    $searchTerm = 'A';
+    $searchTerm = 'AAAAA';
 
     for ($i = 0; $i < 3; $i++) {
         Pessoa::factory([
-            'apelido' => substr($searchTerm . fake()->word(), 0, 32),
+            'apelido' => substr($searchTerm . fake()->name(), 0, 26) . $i,
             'nome'    => $searchTerm . fake()->firstName(),
             'stack'   => [$searchTerm . fake()->word()],
         ])->create();
@@ -68,7 +68,7 @@ it('should return an array when term is found in multiple fields', function () {
     ])->create();
 
     get(route('pessoas.search', ['t' => $searchTerm]))
-        ->assertJsonIsArray()
-        ->assertJsonCount(3)
+        ->assertJsonIsArray('data')
+        ->assertJsonCount(3, 'data')
         ->assertOk();
 });
