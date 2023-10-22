@@ -64,5 +64,16 @@ describe('Validation', function () {
 it('should be able to store a new person when data is valid', function () {
     $pessoa = Pessoa::factory()->makeOne();
 
-    postJson(route('pessoas.store', $pessoa->toArray()))->assertCreated();
+    postJson(route('pessoas.store', $pessoa->toArray()))
+        ->assertCreated()
+        ->assertHeader('Location')
+        ->assertJsonStructure([
+            'data' => [
+                'id',
+                'apelido',
+                'nome',
+                'nascimento',
+                'stack',
+            ],
+        ]);
 });
