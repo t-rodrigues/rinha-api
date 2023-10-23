@@ -11,6 +11,6 @@ class ShowController extends Controller
 {
     public function __invoke(Pessoa $pessoa): JsonResource
     {
-        return new PessoaResource($pessoa);
+        return PessoaResource::make($pessoa);
     }
 }

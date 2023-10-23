@@ -68,12 +68,10 @@ it('should be able to store a new person when data is valid', function () {
         ->assertCreated()
         ->assertHeader('Location')
         ->assertJsonStructure([
-            'data' => [
-                'id',
-                'apelido',
-                'nome',
-                'nascimento',
-                'stack',
-            ],
+            'id',
+            'apelido',
+            'nome',
+            'nascimento',
+            'stack',
         ]);
 });

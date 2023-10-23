@@ -18,6 +18,6 @@ class UpdateController extends Controller
         $pessoa->fill($request->validated());
         $pessoa->save();
 
-        return new PessoaResource($pessoa);
+        return PessoaResource::make($pessoa);
     }
 }

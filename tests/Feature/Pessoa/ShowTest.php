@@ -13,12 +13,12 @@ it('should return PessoaResource when valid id', function () {
     $pessoa = Pessoa::factory()->create();
     get(route('pessoas.show', ['pessoa' => $pessoa->id]))
         ->assertOk()
-        ->assertJsonStructure(['data' => [
+        ->assertJsonStructure([
             'id',
             'apelido',
             'nome',
             'nascimento',
             'stack',
-        ]])
-        ->assertJson(['data' => $pessoa->toArray()]);
+        ])
+        ->assertJson($pessoa->toArray());
 });

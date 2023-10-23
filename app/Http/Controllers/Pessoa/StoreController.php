@@ -17,7 +17,7 @@ class StoreController extends Controller
     {
         $pessoa = Pessoa::create($request->validated());
 
-        return (new PessoaResource($pessoa))
+        return PessoaResource::make($pessoa)
             ->response()
             ->setStatusCode(201)
             ->header('Location', route('pessoas.show', ['pessoa' => $pessoa->id]));
