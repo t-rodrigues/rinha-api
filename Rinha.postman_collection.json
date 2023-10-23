@@ -1,0 +1,99 @@
+{
+    "info": {
+        "_postman_id": "e150ee71-69de-446c-ad96-e4c5a9ee1102",
+        "name": "Rinha",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "22978972"
+    },
+    "item": [
+        {
+            "name": "Post",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"apelido\": \"josé\",\n    \"nome\": \"José Roberto\",\n    \"nascimento\": \"2000-10-01\",\n    \"stack\": [\"C#\", \"Node\", \"Oracle\"]\n}\n",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/pessoas",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["pessoas"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/pessoas/9a6f26a1-3505-4168-a762-d23c48611164",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["pessoas", "9a6f26a1-3505-4168-a762-d23c48611164"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Search",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/pessoas?t=Node",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["pessoas"],
+                    "query": [
+                        {
+                            "key": "t",
+                            "value": "Node"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Put",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nome\" : \"José Roberto Updated\",\n    \"nascimento\" : \"2000-10-01\",\n    \"stack\" : [\"PHP\", \"Node\"]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/pessoas/josé",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["pessoas", "josé"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/pessoas/josé",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["pessoas", "josé"]
+                }
+            },
+            "response": []
+        }
+    ]
+}
