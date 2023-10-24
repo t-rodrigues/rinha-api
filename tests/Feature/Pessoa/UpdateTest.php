@@ -5,7 +5,7 @@ use App\Models\Pessoa;
 use function Pest\Laravel\putJson;
 
 it('should return 404 when invalid apelido was provided', function () {
-    putJson(route('pessoas.update', ['pessoa', 'invalid']))->assertNotFound();
+    putJson(route('pessoas.update', ['pessoa' => 'invalid']))->assertNotFound();
 });
 
 it('should return 422 when invalid data was provided', function () {
