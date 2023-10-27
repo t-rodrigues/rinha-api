@@ -10,14 +10,11 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class UpdateController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(Pessoa $pessoa, UpdateRequest $request): JsonResource
     {
         $pessoa->fill($request->validated());
         $pessoa->save();
 
-        return PessoaResource::make($pessoa);
+        return PessoaResource::make($pessoa->refresh());
     }
 }
