@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class ContagemController extends Controller
 {
-    public function index(): JsonResponse
+    public function __invoke(): JsonResponse
     {
         return response()->json(['count' => Pessoa::count()]);
     }

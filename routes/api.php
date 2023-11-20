@@ -12,4 +12,4 @@ Route::prefix('/pessoas')->group(function () {
     Route::delete('/{pessoa:apelido}', [PessoaController::class, 'destroy'])->name('pessoas.destroy');
 });
 
-Route::get('/contagem-pessoas', [ContagemController::class, 'index']);
+Route::get('/contagem-pessoas', ContagemController::class);
