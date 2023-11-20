@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pessoa;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pessoa\StoreRequest;
@@ -8,13 +8,13 @@ use App\Http\Resources\PessoaResource;
 use App\Services\PessoaService;
 use Illuminate\Http\{JsonResponse, Response};
 
-class StoreController extends Controller
+class PessoaController extends Controller
 {
     public function __construct(private readonly PessoaService $service)
     {
     }
 
-    public function __invoke(StoreRequest $request): JsonResponse
+    public function store(StoreRequest $request): JsonResponse
     {
         $pessoa = $this->service->store($request->validated());
 
