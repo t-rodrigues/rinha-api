@@ -37,4 +37,11 @@ class PessoaController extends Controller
 
         return PessoaResource::make($pessoa->refresh());
     }
+
+    public function destroy(Pessoa $pessoa): Response
+    {
+        $pessoa->delete();
+
+        return response()->noContent();
+    }
 }
