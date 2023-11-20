@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\{ContagemController, Pessoa};
+use App\Http\Controllers\Api\ContagemController;
+use App\Http\Controllers\{Pessoa};
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/pessoas')->group(function () {
