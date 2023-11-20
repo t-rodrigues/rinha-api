@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Pessoa\StoreRequest;
+use App\Http\Requests\Pessoa\{StoreRequest, UpdateRequest};
 use App\Http\Resources\PessoaResource;
 use App\Models\Pessoa;
 use App\Services\PessoaService;
@@ -29,5 +29,12 @@ class PessoaController extends Controller
     public function show(Pessoa $pessoa): JsonResource
     {
         return PessoaResource::make($pessoa);
+    }
+
+    public function update(Pessoa $pessoa, UpdateRequest $request): JsonResource
+    {
+        $pessoa->fill($request->validated())->save();
+
+        return PessoaResource::make($pessoa->refresh());
     }
 }

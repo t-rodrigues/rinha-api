@@ -9,7 +9,7 @@ Route::prefix('/pessoas')->group(function () {
 
     Route::post('/', [PessoaController::class, 'store'])->name('pessoas.store');
     Route::get('/{pessoa}', [PessoaController::class, 'show'])->name('pessoas.show');
-    Route::put('/{pessoa:apelido}', Pessoa\UpdateController::class)->name('pessoas.update');
+    Route::put('/{pessoa:apelido}', [PessoaController::class, 'update'])->name('pessoas.update');
     Route::delete('/{pessoa:apelido}', Pessoa\DeleteController::class)->name('pessoas.destroy');
 });
 
