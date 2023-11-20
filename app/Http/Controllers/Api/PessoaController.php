@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pessoa\StoreRequest;
 use App\Http\Resources\PessoaResource;
+use App\Models\Pessoa;
 use App\Services\PessoaService;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\{JsonResponse, Response};
 
 class PessoaController extends Controller
@@ -22,5 +24,10 @@ class PessoaController extends Controller
             ->response()
             ->setStatusCode(Response::HTTP_CREATED)
             ->header('Location', route('pessoas.show', ['pessoa' => $pessoa->id]));
+    }
+
+    public function show(Pessoa $pessoa): JsonResource
+    {
+        return PessoaResource::make($pessoa);
     }
 }

@@ -8,7 +8,7 @@ Route::prefix('/pessoas')->group(function () {
     Route::get('/', SearchController::class)->name('pessoas.search');
 
     Route::post('/', [PessoaController::class, 'store'])->name('pessoas.store');
-    Route::get('/{pessoa}', Pessoa\ShowController::class)->name('pessoas.show');
+    Route::get('/{pessoa}', [PessoaController::class, 'show'])->name('pessoas.show');
     Route::put('/{pessoa:apelido}', Pessoa\UpdateController::class)->name('pessoas.update');
     Route::delete('/{pessoa:apelido}', Pessoa\DeleteController::class)->name('pessoas.destroy');
 });
