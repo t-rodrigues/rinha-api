@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{Collection, Model};
 
 class Pessoa extends Model
 {
@@ -23,4 +23,13 @@ class Pessoa extends Model
     protected $casts = [
         'stack' => 'array',
     ];
+
+    public function search(string $term): Collection
+    {
+        return Pessoa::where('apelido', 'LIKE', "%{$term}%")
+            ->orWhere('nome', 'LIKE', "%{$term}%")
+            ->orWhere('stack', 'LIKE', "%{$term}%")
+            ->limit(50)
+            ->get();
+    }
 }

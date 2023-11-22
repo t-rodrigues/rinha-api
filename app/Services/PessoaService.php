@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Pessoa;
-use Illuminate\Database\Eloquent\Collection;
 
 class PessoaService
 {
@@ -17,15 +16,20 @@ class PessoaService
     }
 
     /**
-     * @param string $term
-     * @return Collection<int, Pessoa>
+     * @param Pessoa $pessoa
+     * @param array<string, mixed> $dadosPessoa
+     * @return Pessoa
      */
-    public function search(string $term): Collection
+    public function update(Pessoa $pessoa, array $dadosPessoa): Pessoa
     {
-        return Pessoa::where('apelido', 'LIKE', "%{$term}%")
-            ->orWhere('nome', 'LIKE', "%{$term}%")
-            ->orWhere('stack', 'LIKE', "%{$term}%")
-            ->limit(50)
-            ->get();
+        $pessoa->fill($dadosPessoa);
+        $pessoa->save();
+
+        return $pessoa->refresh();
+    }
+
+    public function delete(Pessoa $pessoa): void
+    {
+        $pessoa->delete();
     }
 }

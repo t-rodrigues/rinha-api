@@ -33,14 +33,14 @@ class PessoaController extends Controller
 
     public function update(Pessoa $pessoa, UpdateRequest $request): JsonResource
     {
-        $pessoa->fill($request->validated())->save();
+        $pessoa = $this->service->update($pessoa, $request->validated());
 
-        return PessoaResource::make($pessoa->refresh());
+        return PessoaResource::make($pessoa);
     }
 
     public function destroy(Pessoa $pessoa): Response
     {
-        $pessoa->delete();
+        $this->service->delete($pessoa);
 
         return response()->noContent();
     }
