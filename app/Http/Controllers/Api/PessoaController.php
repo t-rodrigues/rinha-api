@@ -7,8 +7,8 @@ use App\Http\Requests\Pessoa\{StoreRequest, UpdateRequest};
 use App\Http\Resources\PessoaResource;
 use App\Models\Pessoa;
 use App\Services\PessoaService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\{JsonResponse, Response};
 
 class PessoaController extends Controller
 {
@@ -22,7 +22,7 @@ class PessoaController extends Controller
 
         return PessoaResource::make($pessoa)
             ->response()
-            ->setStatusCode(Response::HTTP_CREATED)
+            ->setStatusCode(JsonResponse::HTTP_CREATED)
             ->header('Location', route('pessoas.show', ['pessoa' => $pessoa->id]));
     }
 
@@ -38,10 +38,10 @@ class PessoaController extends Controller
         return PessoaResource::make($pessoa);
     }
 
-    public function destroy(Pessoa $pessoa): Response
+    public function destroy(Pessoa $pessoa): JsonResponse
     {
         $this->service->delete($pessoa);
 
-        return response()->noContent();
+        return response()->json(status: JsonResponse::HTTP_NO_CONTENT);
     }
 }
