@@ -26,7 +26,7 @@ class Pessoa extends Model
 
     public function search(string $term): Collection
     {
-        return Pessoa::where('apelido', 'LIKE', "%{$term}%")
+        return static::where('apelido', 'LIKE', "%{$term}%")
             ->orWhere('nome', 'LIKE', "%{$term}%")
             ->orWhere('stack', 'LIKE', "%{$term}%")
             ->limit(50)
