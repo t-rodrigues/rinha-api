@@ -7,20 +7,20 @@ Esse projeto é um CRUD do Desafio [Rinha de Back-end](https://github.com/zanfra
 Clone o projeto
 
 ```bash
-  git clone https://github.com/t-rodrigues/rinha-api.git
+git clone https://github.com/t-rodrigues/rinha-api.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd rinha-api
+cd rinha-api
 ```
 
 Configure o banco de dados no arquivo .env
 
 ```bash
-  cp .env.example .env
-  nano .env
+cp .env.example .env
+nano .env
 ```
 
 ```
@@ -35,20 +35,20 @@ DB_PASSWORD=senha
 Instale as dependências
 
 ```bash
-  composer install
+composer install
 ```
 
 Suba o projeto via Sail usando:
 
 ```bash
-  ./vendor/bin/sail build
-  ./vendor/bin/sail up -d
+./vendor/bin/sail build
+./vendor/bin/sail up -d
 ```
 
 Execute a migrate
 
 ```bash
-  ./vendor/bin/sail artisan migrate
+./vendor/bin/sail artisan migrate
 ```
 
 O servidor deve estar recebendo requisições no endereço `http://localhost`.
@@ -58,7 +58,7 @@ O servidor deve estar recebendo requisições no endereço `http://localhost`.
 Para rodar os testes, rode o seguinte comando
 
 ```bash
-  ./vendor/bin/sail pest
+./vendor/bin/sail pest
 ```
 
 ## Stack utilizada
