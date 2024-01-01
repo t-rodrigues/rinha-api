@@ -16,6 +16,17 @@ Entre no diretório do projeto
 cd rinha-api
 ```
 
+Instale as dependências
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
 Configure o banco de dados no arquivo .env
 
 ```bash
@@ -30,12 +41,6 @@ DB_PORT=3306
 DB_DATABASE=rinha_api
 DB_USERNAME=rinha
 DB_PASSWORD=senha
-```
-
-Instale as dependências
-
-```bash
-composer install
 ```
 
 Suba o projeto via Sail usando:
