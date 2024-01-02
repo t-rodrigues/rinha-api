@@ -10,11 +10,59 @@ use Illuminate\Support\Str;
  */
 class PessoaFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    private array $programmingLanguages = [
+        "JavaScript",
+        "Python",
+        "Java",
+        "C#",
+        "C++",
+        "TypeScript",
+        "PHP",
+        "Swift",
+        "Ruby",
+        "Go",
+        "Kotlin",
+        "Rust",
+        "Objective-C",
+        "Dart",
+        "Shell Script (Bash)",
+        "Scala",
+        "Perl",
+        "HTML/CSS",
+        "SQL",
+        "R",
+        "MATLAB",
+        "Vue.js",
+        "React.js",
+        "Angular",
+        "Node.js",
+        "Express.js",
+        "Django",
+        "Flask",
+        "Spring Boot",
+        "ASP.NET",
+        "Ruby on Rails",
+        "Laravel",
+        "Symfony",
+        "ASP.NET Core",
+        "Flutter",
+        "React Native",
+        "Xamarin",
+        "SwiftUI",
+        "Qt",
+        "Electron",
+        "Bootstrap",
+        "Tailwind CSS",
+        "Sass",
+        "Redux",
+        "GraphQL",
+        "RESTful API",
+        "TensorFlow",
+        "PyTorch",
+        "Unity",
+        "Arduino",
+    ];
+
     public function definition(): array
     {
         $nome = fake()->name();
@@ -23,19 +71,14 @@ class PessoaFactory extends Factory
             'apelido'    => Str::slug($nome),
             'nome'       => $nome,
             'nascimento' => fake()->date(),
-            'stack'      => $this->gerarStack(),
+            'stack'      => $this->generateStack(),
         ];
     }
 
-    private function gerarStack(): array
+    private function generateStack(): array
     {
-        $quantidade = fake()->numberBetween(0, 5);
-        $stack      = [];
+        $quantity = fake()->numberBetween(0, 5);
 
-        for ($i = 0; $i < $quantidade; $i++) {
-            $stack[] = fake()->word();
-        }
-
-        return $stack;
+        return fake()->randomElements($this->programmingLanguages, $quantity);
     }
 }
