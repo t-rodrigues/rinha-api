@@ -70,7 +70,7 @@ class PessoaFactory extends Factory
         return [
             'apelido'    => Str::slug($nome),
             'nome'       => $nome,
-            'nascimento' => fake()->date(),
+            'nascimento' => fake()->dateTimeThisCentury('-10 years'),
             'stack'      => $this->generateStack(),
         ];
     }

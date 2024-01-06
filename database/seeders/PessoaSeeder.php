@@ -9,6 +9,6 @@ class PessoaSeeder extends Seeder
 {
     public function run(): void
     {
-        Pessoa::factory(500)->create();
+        Pessoa::factory(5000)->create();
     }
 }
