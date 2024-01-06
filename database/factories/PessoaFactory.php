@@ -68,9 +68,9 @@ class PessoaFactory extends Factory
         $nome = fake()->unique()->name();
 
         return [
-            'apelido'    => Str::slug($nome),
+            'apelido'    => Str::slug(Str::limit($nome, 32, '')),
             'nome'       => $nome,
-            'nascimento' => fake()->dateTimeThisCentury('-10 years'),
+            'nascimento' => fake()->dateTimeThisCentury('-10 years')->format('Y-m-d H:i:s'),
             'stack'      => $this->generateStack(),
         ];
     }
