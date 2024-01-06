@@ -39,7 +39,7 @@ it('should return an array with more than 1 when nomes matches', function () {
 });
 
 it('should return an array when stack contains the search term', function () {
-    $searchTerm = 'Java';
+    $searchTerm = 'search';
     Pessoa::factory(5, ['stack' => [$searchTerm]])->create();
     Pessoa::factory(5)->create();
 
