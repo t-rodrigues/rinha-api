@@ -30,6 +30,7 @@ class Pessoa extends Model
         return static::where('apelido', 'LIKE', "%{$term}%")
             ->orWhere('nome', 'LIKE', "%{$term}%")
             ->orWhere('stack', 'LIKE', "%{$term}%")
+            ->orderBy('nascimento', 'desc')
             ->paginate(50);
     }
 }
