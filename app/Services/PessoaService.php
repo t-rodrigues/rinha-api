@@ -22,10 +22,9 @@ class PessoaService
      */
     public function update(Pessoa $pessoa, array $dadosPessoa): Pessoa
     {
-        $pessoa->fill($dadosPessoa);
-        $pessoa->save();
+        $pessoa->update($dadosPessoa);
 
-        return $pessoa->refresh();
+        return $pessoa;
     }
 
     public function delete(Pessoa $pessoa): void

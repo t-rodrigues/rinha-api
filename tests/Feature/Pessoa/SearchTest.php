@@ -61,11 +61,7 @@ it('should return an array when term is found in multiple fields', function () {
         ])->create();
     }
 
-    Pessoa::factory([
-        'apelido' => 'B',
-        'nome'    => 'B',
-        'stack'   => [],
-    ])->create();
+    Pessoa::factory()->create();
 
     get(route('pessoas.search', ['t' => $searchTerm]))
         ->assertJsonIsArray('data')
