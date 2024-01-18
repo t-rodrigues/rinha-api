@@ -9,7 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property-read string $id
  * @property-read string $apelido
  * @property-read string $nome
- * @property-read string $nascimento
+ * @property-read \DateTime $nascimento
  * @property-read array $stack
  */
 class PessoaResource extends JsonResource
@@ -27,7 +27,7 @@ class PessoaResource extends JsonResource
             'id'         => $this->id,
             'apelido'    => $this->apelido,
             'nome'       => $this->nome,
-            'nascimento' => $this->nascimento,
+            'nascimento' => $this->nascimento->format('Y-m-d'),
             'stack'      => $this->stack ?? [],
         ];
     }

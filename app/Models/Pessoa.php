@@ -22,7 +22,8 @@ class Pessoa extends Model
     ];
 
     protected $casts = [
-        'stack' => 'array',
+        'nascimento' => 'date:Y-m-d',
+        'stack'      => 'array',
     ];
 
     public function search(string $term): LengthAwarePaginator
